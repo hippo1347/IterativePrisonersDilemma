@@ -21,8 +21,10 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    if their_history.choice('c') > their_history.choice('b') * 3
+    if their_history.choice('c') > their_history.choice('b') * 3:
     return 'b'
+    else:
+        return random.choice('b','c')
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
