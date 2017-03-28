@@ -6,7 +6,7 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-#version 3/27/17
+#version 3/28/17
 
 import random
 
@@ -22,9 +22,15 @@ def move(my_history, their_history, my_score, their_score):
     Returns 'c' or 'b'. 
     '''
     if their_history.count('c') > their_history.count('b') * 3:
-    return 'b'
+        return 'b'
     else:
-        return random.choice('b','c')
+        return random.choice(['b','c'])
+    elif their_history.count('b') > their_history.count('c') * 3:
+        return 'b'
+    else:
+        return random.choice(['b','c']
+        #try using or ??
+        
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
@@ -56,8 +62,8 @@ def test_move(my_history, their_history, my_score, their_score, result):
 if __name__ == '__main__':
      
     # Test 1: Betray on first move.
-    if test_move(my_history='',
-              their_history='', 
+    if test_move(my_history='ccc',
+              their_history='cccccc', 
               my_score=0,
               their_score=0,
               result='b'):
