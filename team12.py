@@ -21,7 +21,7 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    if their_history.choice('c') > their_history.choice('b') * 3:
+    if their_history.count('c') > their_history.count('b') * 3:
     return 'b'
     else:
         return random.choice('b','c')
