@@ -23,12 +23,15 @@ def move(my_history, their_history, my_score, their_score):
     '''
     if their_history.count('c') > their_history.count('b') * 3:
         return 'b'
-    else:
-        return random.choice(['b','c'])
     elif their_history.count('b') > their_history.count('c') * 3:
         return 'b'
+    elif 'b' not in their_history[:7]:
+        return 'c'
+    elif 'b' in their_history[:7]:
+        return 'b'
     else:
-        return random.choice(['b','c']
+        return random.choice(['b','c'])
+        
         #try using or ??
         
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
