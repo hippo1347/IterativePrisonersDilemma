@@ -8,9 +8,13 @@
 
 team_name = 'ASDFGHJKL' # Only 10 chars displayed.
 strategy_name = 'Stress'
-strategy_description = 'Betrays every single time'
+strategy_description = 'Colludes the first turn; betrays, if and only if, betrayed'
     
 def move(my_history, their_history, my_score, their_score):
+    if len(my_history)%4 == 0:
+        return 'c'
+    else:
+        return 'b'
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
     
@@ -48,11 +52,11 @@ def test_move(my_history, their_history, my_score, their_score, result):
 if __name__ == '__main__':
      
     # Test 1: Betray on first move.
-    if test_move(my_history='',
-              their_history='', 
+    if test_move(my_history='cbbbbbbb',
+              their_history='bcbbbbbb', 
               my_score=0,
               their_score=0,
-              result='b'):
+              result='c'):
          print 'Test passed'
      # Test 2: Continue betraying if they collude despite being betrayed.
     test_move(my_history='bbb',
