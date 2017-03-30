@@ -36,7 +36,7 @@ def move(my_history, their_history, my_score, their_score):
     if opp_betray > 3:
         return 'b'
 
-     return 'c'
+    return 'c'
 
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
