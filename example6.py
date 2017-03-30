@@ -21,9 +21,7 @@ def move(my_history, their_history, my_score, their_score):
     
     Returns 'c' or 'b' for collude or betray.
     '''
-    if len(my_history)==0: # It's the first round: betray
+    if 'b' in their_history:
         return 'b'
-    elif their_history[len(their_history)-1] == 'c':
-        return 'c' 
-    elif their_history[len(their_history)-1] == 'b':
-        return 'b'
+    else:
+        return 'c'
