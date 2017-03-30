@@ -22,10 +22,7 @@ def move(my_history, their_history, my_score, their_score):
     if len(my_history)==0: # It's the first round: betray
         return 'b'
     elif their_history[len(their_history)-1] == 'c':
-        if r >= 80:
-            return 'c'  
-        if r < 20:
-            return 'b'
+        return 'c'  
     elif their_history[len(their_history)-1] == 'b':
         return 'b'
         
