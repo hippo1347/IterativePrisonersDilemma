@@ -5,48 +5,61 @@
 #     strategy_description: a string
 #     move: A function that returns 'c' or 'b'
 ####
-
+ 
 team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
-    
+strategy_name = 'No Idea How This Works'
+strategy_description = 'legit'
+ctest = 0
+btest = 0
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
-    
+     
     Make my move.
     Returns 'c' or 'b'. 
     '''
-
+    ctest = 0
+    btest = 0
+    if len(their_history) > 15:
+        for k in their_history:
+                if k == 'c':
+                    ctest += 1
+                if k == 'b':
+                    btest += 1
+    elif len(my_history)==0:
+        return 'c'
+    elif len(their_history) > 4:
+        if their_history[:4] == 'cbcb':
+            return 'b'
+    elif len(their_history) > 1:
+        if their_history[-1] == 'b' and their_history[-2] == 'b':
+            return 'b'
+    elif len(their_history) > 15:
+        endtest = 0
+        endtest = ctest/btest
+        if endtest >= 0.65:
+            return 'b'
+        elif endtest <= 0.45:
+            return 'c'
+        else:
+            return 'c'
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
     # The most recent round is my_history[-1] and their_history[-1].
-    
+     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
-
-    
+ 
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
     Returns True or False, dpending on whether result was as expected.
     '''
-    real_result = move(my_history, their_history, my_score, their_score)
-    if real_result == result:
-        return True
-    else:
-        print("move(" +
-            ", ".join(["'"+my_history+"'", "'"+their_history+"'",
-                       str(my_score), str(their_score)])+
-            ") returned " + "'" + real_result + "'" +
-            " and should have returned '" + result + "'")
-        return False
-
+ 
+ 
 if __name__ == '__main__':
-     
+      
     # Test 1: Betray on first move.
     if test_move(my_history='',
               their_history='', 
