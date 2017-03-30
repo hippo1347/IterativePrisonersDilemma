@@ -6,15 +6,16 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
+team_name = 'Pietro' # Only 10 chars displayed.
 strategy_name = 'The name the team gives to this strategy'
 strategy_description = 'How does this strategy decide?'
     
 def move(my_history, their_history, my_score, their_score):
+    
     # shout out to Martin Jones for the inspiration <3
     if len(my_history) == 0:
         return 'c'
-    
+
     opp_betray = 0
     
     if their_history[-1] == 'b':
